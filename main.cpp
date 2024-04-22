@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <filesystem>
+#include <thread>
 
 #include "Creature/Dino.h"
 #include "Utils/SoundManager.h"
@@ -19,20 +19,32 @@ int main() {
 
     while (window.isOpen()){
         window.clear();
-        
-        dino.animator.updateSpriteFrame();
-        //dino.sprite.setPosition(0.1 * window.getSize().x,dino.sprite.getPosition().y - 0.01);
+
+        if(dino.dinoState == IS_RUNNING)
+            dino.animator.updateSpriteFrame();
         window.draw(dino.sprite);
 
         window.display();
 
         while (window.pollEvent(event)){
-            if(event.type==sf::Event::Closed){
-                window.close();
+            switch(event.type) {
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+                case sf::Event::Resized:
+                    //window.setSize(originalSize);
+                case sf::Event::KeyPressed:
+                    if(event.key.code == sf::Keyboard::Up || event.key.code == sf::Keyboard::Space) {
+                        if(dino.getState() == IS_JUMPING) continue;
+                        dino.setState(IS_JUMPING);
+                        std::thread jumpThread(&Dino::jump, &dino);
+                        jumpThread.detach();
+                    }
+                default:
+                    std::cout << "Nieobslugiwany event type";
             }
         }
     }
 
-    std::cout << "Hello, World!" << std::endl;
     return 0;
 }

@@ -11,3 +11,6 @@ extern double defaultAnimSF = 50; // default animator single frame interval valu
 
 sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
 extern sf::RenderWindow window = sf::RenderWindow(desktopMode, "Dino The Game");
+
+extern const float gravity = 1.05;
+extern const float dash = 1.7;

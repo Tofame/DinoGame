@@ -11,3 +11,6 @@ extern sf::Texture textureDinoWalk;
 extern double defaultAnimSF;
 
 extern sf::RenderWindow window;
+
+extern const float gravity;
+extern const float dash;
