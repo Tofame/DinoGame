@@ -15,11 +15,13 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(Dino
         main.cpp
-        Dino.cpp
-        Dino.h
-        SoundManager.cpp
-        SoundManager.h
+        Creature/Dino.cpp
+        Creature/Dino.h
+        Utils/SoundManager.cpp
+        Utils/SoundManager.h
         Globals.cpp
         Globals.h
+        Utils/Animator.cpp
+        Utils/Animator.h
 )
 target_link_libraries(Dino sfml-graphics sfml-audio)

@@ -1,35 +1,28 @@
+#pragma once
+
 #include <iostream>
-#include <sfml/Graphics.hpp>
 #include <filesystem>
 
-#include "Dino.h"
-#include "SoundManager.h"
+#include "Creature/Dino.h"
+#include "Utils/SoundManager.h"
+#include "Globals.h"
 
 int main() {
     auto SM = soundManager();
-    SM.addSound("die");
-    SM.playSound("die");
+    // SM.addSound("die");
+    // SM.playSound("die");
 
-    auto d = Dino();
-    auto window = sf::RenderWindow(
-            sf::VideoMode(800,600),"test");
+    auto dino = Dino();
+    dino.setupSprite();
 
+    auto window = sf::RenderWindow(sf::VideoMode(800,600),"Dino The Game");
     auto event = sf::Event();
-    auto shape = sf::CircleShape(80);
-    auto sprite = sf::Sprite();
 
-    auto texture = sf::Texture();
-    auto projectpath=std::filesystem::current_path().parent_path();
-    texture.loadFromFile(projectpath.string()+"\\Graphics\\Characters\\mario.png");
-    sprite.setTexture(texture);
-    shape.setTexture(&texture);
-    sprite.setColor(sf::Color::Red);
-//    sprite.setScale(0.5,0.5);
-    sprite.setTextureRect(sf::IntRect(10,10,100,100));
     while (window.isOpen()){
         window.clear();
-        window.draw(sprite);
-       // window.draw(shape);
+
+        window.draw(dino.getSprite());
+
         window.display();
 
         while (window.pollEvent(event)){
@@ -38,6 +31,7 @@ int main() {
             }
         }
     }
+
     std::cout << "Hello, World!" << std::endl;
     return 0;
 }
