@@ -19,9 +19,9 @@ auto Dino::setup() -> void {
     this->sprite.setTexture(textureDinoRun);
     this->sprite.setTextureRect(sf::IntRect(0,0,32,32));
 
-    this->sprite.setScale(2.0f, 2.0f);
+    this->sprite.setScale(spriteScale, spriteScale);
 
-    this->sprite.setPosition(0.1 * window.getSize().x, 0.5 * window.getSize().y);
+    this->sprite.setPosition(dinoPosX * window.getSize().x, dinoPosY * window.getSize().y);
 
     this->setState(IS_RUNNING);
 
@@ -47,7 +47,7 @@ void Dino::jump() {
         auto t = v0 * std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         t /= 1000;
         h = v0 * t - (0.5 * (gravity + dash * 1.25) * t * t);
-        this->sprite.setPosition(0.1 * window.getSize().x, 0.5 * window.getSize().y - std::max(0.0f, h));
+        this->sprite.setPosition(dinoPosX * window.getSize().x, dinoPosY * window.getSize().y - std::max(0.0f, h));
     }
     this->setState(IS_RUNNING);
 }
