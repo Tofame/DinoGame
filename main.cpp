@@ -15,13 +15,15 @@ int main() {
     auto dino = Dino();
     dino.setup();
 
-    auto window = sf::RenderWindow(sf::VideoMode(windowWidth,windowHeight),"Dino The Game");
     auto event = sf::Event();
 
     while (window.isOpen()){
         window.clear();
 
-        window.draw(dino.getSprite());
+        // dino.animator.getCurrentFrame().setPosition(0.1 * window.getSize().x, 0.1 * window.getSize().y + dino.animator.getCurrentFrame().getPosition().y + 10)
+        dino.getSprite();
+        dino.sprite.setPosition(0.1 * window.getSize().x,dino.sprite.getPosition().y - 0.01);
+        window.draw(dino.sprite);
 
         window.display();
 

@@ -7,8 +7,8 @@
 
 Dino::Dino() : animator() {}
 
-auto Dino::getSprite() -> sf::Sprite {
-    return this->animator.getCurrentFrame();
+auto Dino::getSprite() -> void {
+    this->animator.getCurrentFrame();
 };
 
 auto Dino::setup() -> void {
@@ -23,8 +23,9 @@ auto Dino::setup() -> void {
     this->sprite.setTexture(textureDinoRun);
     this->sprite.setTextureRect(sf::IntRect(0,0,32,32));
 
-    this->sprite.setPosition(0.1 * windowWidth, 0.5 * windowHeight);
+    this->sprite.setPosition(0.1 * window.getSize().x, 0.5 * window.getSize().y);
 
-    this->animator = Animator(this->sprite, defaultAnimSF);
+    auto *x = &(this->sprite);
+    this->animator = Animator(x, defaultAnimSF);
     this->animator.start();
 };

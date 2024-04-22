@@ -5,7 +5,7 @@
 
 class Animator {
 private:
-    sf::Sprite sheet;
+    sf::Sprite *sheet;
     int frameCount;
     int frameIndex;
     std::chrono::system_clock::time_point startTime;
@@ -13,9 +13,9 @@ private:
 
 public:
     Animator();
-    Animator(sf::Sprite& sheet, double singleFrameInterval);
+    Animator(sf::Sprite* sheet, double singleFrameInterval);
 
     void start();
 
-    auto getCurrentFrame() -> sf::Sprite;
+    auto getCurrentFrame() -> void;
 };

@@ -9,7 +9,7 @@ public:
 
     sf::Sprite sprite;
 
-    auto getSprite() -> sf::Sprite;
+    auto getSprite() -> void;
 
     Animator animator;
 
