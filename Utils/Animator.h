@@ -17,5 +17,5 @@ public:
 
     void start();
 
-    auto getCurrentFrame() -> void;
+    auto updateSpriteFrame() -> void;
 };

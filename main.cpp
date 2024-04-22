@@ -21,7 +21,7 @@ int main() {
         window.clear();
 
         // dino.animator.getCurrentFrame().setPosition(0.1 * window.getSize().x, 0.1 * window.getSize().y + dino.animator.getCurrentFrame().getPosition().y + 10)
-        dino.getSprite();
+        dino.animator.updateSpriteFrame();
         dino.sprite.setPosition(0.1 * window.getSize().x,dino.sprite.getPosition().y - 0.01);
         window.draw(dino.sprite);
 

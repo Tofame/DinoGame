@@ -14,7 +14,7 @@ void Animator::start() {
     startTime =  std::chrono::high_resolution_clock::now();
 }
 
-auto Animator::getCurrentFrame() -> void {
+auto Animator::updateSpriteFrame() -> void {
     std::chrono::system_clock::time_point currentTime = std::chrono::high_resolution_clock::now();
     auto elapsedTime = currentTime - startTime;
 

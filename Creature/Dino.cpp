@@ -7,10 +7,6 @@
 
 Dino::Dino() : animator() {}
 
-auto Dino::getSprite() -> void {
-    this->animator.getCurrentFrame();
-};
-
 auto Dino::setup() -> void {
     if (!textureDinoRun.loadFromFile(projectPath+"\\Resources\\Graphics\\Characters\\raptor-run.png"))
         std::cout << "Couldn't load Dino texture (Running).";
