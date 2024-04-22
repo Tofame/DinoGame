@@ -1,21 +1,20 @@
-#include "SoundManager.h"
+#include "soundManager.h"
+#include <filesystem>
+#include "Globals.h"
 
-std::map<std::string, sf::Sound> SoundManager::soundBuffers = std::map<std::string, sf::SoundBuffer>();
-
-auto SoundManager::createSound(const std::string& filename) -> void {
+void soundManager::addSound(const std::string &name) {
     sf::SoundBuffer buffer;
-
-    auto projectPath=std::filesystem::current_path().parent_path();
-    if (!buffer.loadFromFile(projectPath.string()+"\\" + filename + ".wav"))
-        throw std::runtime_error("No sound file");
-
-    SoundManager::soundBuffers[filename] = buffer;
+    if (!buffer.loadFromFile(std::filesystem::current_path().parent_path().string()+"\\" + name + ".wav"))
+        throw std::runtime_error("Failed to load file.");
+    soundBuffers[name] = buffer;
 }
 
-auto SoundManager::playSound(const std::string& soundName) -> void {
-    auto it = soundBuffers.find(soundName);
-    if(it != soundBuffers.end()) {
-        sf::Sound sound(it->second);
+void soundManager::playSound(const std::string &name) {
+    auto it = soundBuffers.find(name);
+    if (it != soundBuffers.end()) {
+        sound.setBuffer(it->second);
         sound.play();
+    } else {
+        throw std::runtime_error("Sound not found.");
     }
 }

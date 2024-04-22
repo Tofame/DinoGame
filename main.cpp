@@ -6,10 +6,9 @@
 #include "SoundManager.h"
 
 int main() {
-    auto projectpath=std::filesystem::current_path().parent_path();
-
-    SoundManager::createSound("die");
-    SoundManager::playSound("die");
+    auto SM = soundManager();
+    SM.addSound("die");
+    SM.playSound("die");
 
     auto d = Dino();
     auto window = sf::RenderWindow(
@@ -20,6 +19,7 @@ int main() {
     auto sprite = sf::Sprite();
 
     auto texture = sf::Texture();
+    auto projectpath=std::filesystem::current_path().parent_path();
     texture.loadFromFile(projectpath.string()+"\\Graphics\\Characters\\mario.png");
     sprite.setTexture(texture);
     shape.setTexture(&texture);

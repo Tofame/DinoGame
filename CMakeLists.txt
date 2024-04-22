@@ -19,5 +19,7 @@ add_executable(Dino
         Dino.h
         SoundManager.cpp
         SoundManager.h
+        Globals.cpp
+        Globals.h
 )
 target_link_libraries(Dino sfml-graphics sfml-audio)
