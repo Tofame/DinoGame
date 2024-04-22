@@ -8,5 +8,5 @@ public:
 
     auto getSprite() -> sf::Sprite;
 
-    auto setupSprite() -> void;
+    auto setupSprites() -> void;
 };
