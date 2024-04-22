@@ -5,8 +5,10 @@
 #include "Dino.h"
 #include "../Globals.h"
 
+Dino::Dino() : animator() {}
+
 auto Dino::getSprite() -> sf::Sprite {
-    return sprite;
+    return this->animator.getCurrentFrame();
 };
 
 auto Dino::setupSprites() -> void {
@@ -19,5 +21,8 @@ auto Dino::setupSprites() -> void {
     this->sprite = sf::Sprite();
 
     this->sprite.setTexture(textureDinoRun);
-    this->sprite.setTextureRect(sf::IntRect(0,0,128,64));
+    this->sprite.setTextureRect(sf::IntRect(0,0,32,32));
+
+    this->animator = Animator(this->sprite, 100);
+    this->animator.start();
 };
