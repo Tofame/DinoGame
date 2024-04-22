@@ -21,7 +21,7 @@ auto Dino::setup() -> void {
 
     this->sprite.setPosition(0.1 * window.getSize().x, 0.5 * window.getSize().y);
 
-    auto *x = &(this->sprite);
-    this->animator = Animator(x, defaultAnimSF);
+    auto *pointerSprite = &(this->sprite);
+    this->animator = Animator(pointerSprite,ANIM_LOOP, defaultAnimSF);
     this->animator.start();
 };

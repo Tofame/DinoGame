@@ -1,11 +1,12 @@
 #include "Animator.h"
 #include <iostream>
 
-Animator::Animator(sf::Sprite* sheet, double singleFrameInterval) {
-    this->sheet = sheet;
-    this->frameCount = static_cast<int>((*sheet).getTexture()->getSize().x/(*sheet).getTexture()->getSize().y);
+Animator::Animator(sf::Sprite* sprite, states state, double singleFrameInterval) {
+    this->sprite = sprite;
+    this->frameCount = static_cast<int>((*sprite).getTexture()->getSize().x/(*sprite).getTexture()->getSize().y);
     this->frameIndex = 0;
     this->singleFrameInterval = singleFrameInterval;
+    this->state = state;
 };
 
 Animator::Animator() {};
@@ -15,17 +16,22 @@ void Animator::start() {
 }
 
 auto Animator::updateSpriteFrame() -> void {
+    if(state == ANIM_STOP) return;
+
     std::chrono::system_clock::time_point currentTime = std::chrono::high_resolution_clock::now();
     auto elapsedTime = currentTime - startTime;
 
     double elapsedTimeMilliseconds = std::chrono::duration<double, std::milli>(elapsedTime).count();
-    this->frameIndex = static_cast<int>((elapsedTimeMilliseconds / singleFrameInterval)) % frameCount;
 
-    int frameHeight = (*sheet).getTexture()->getSize().y;
+    auto frameComponent = static_cast<int>((elapsedTimeMilliseconds / singleFrameInterval));
+    this->frameIndex = frameComponent % frameCount;
+    if((frameComponent >  frameCount) && (state == ANIM_ONCE))
+        this->state = ANIM_STOP;
 
-    (*sheet).setTextureRect(sf::IntRect(0,0,frameHeight,frameHeight));
 
-    (*sheet).setTextureRect(sf::IntRect(frameIndex * frameHeight, 0, frameHeight, frameHeight));
-    //sheet.setPosition(0.1,sheet.getPosition().y - 0.1);
-    //return sheet;
+    int frameHeight = (*sprite).getTexture()->getSize().y;
+
+    (*sprite).setTextureRect(sf::IntRect(0,0,frameHeight,frameHeight));
+
+    (*sprite).setTextureRect(sf::IntRect(frameIndex * frameHeight, 0, frameHeight, frameHeight));
 }
