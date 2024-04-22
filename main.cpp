@@ -3,9 +3,13 @@
 #include <filesystem>
 
 #include "Dino.h"
+#include "SoundManager.h"
 
 int main() {
     auto projectpath=std::filesystem::current_path().parent_path();
+
+    SoundManager::createSound("die");
+    SoundManager::playSound("die");
 
     auto d = Dino();
     auto window = sf::RenderWindow(
