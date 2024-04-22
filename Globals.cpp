@@ -6,3 +6,8 @@ extern std::string projectPath = std::filesystem::current_path().parent_path().s
 extern sf::Sound sound = sf::Sound();
 extern sf::Texture textureDinoRun = sf::Texture();
 extern sf::Texture textureDinoWalk = sf::Texture();
+
+extern int windowWidth = 800;
+extern int windowHeight = 600;
+
+extern double defaultAnimSF = 50; // default animator single frame interval value

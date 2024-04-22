@@ -11,7 +11,7 @@ auto Dino::getSprite() -> sf::Sprite {
     return this->animator.getCurrentFrame();
 };
 
-auto Dino::setupSprites() -> void {
+auto Dino::setup() -> void {
     if (!textureDinoRun.loadFromFile(projectPath+"\\Resources\\Graphics\\Characters\\raptor-run.png"))
         std::cout << "Couldn't load Dino texture (Running).";
 
@@ -23,6 +23,8 @@ auto Dino::setupSprites() -> void {
     this->sprite.setTexture(textureDinoRun);
     this->sprite.setTextureRect(sf::IntRect(0,0,32,32));
 
-    this->animator = Animator(this->sprite, 100);
+    this->sprite.setPosition(0.1 * windowWidth, 0.5 * windowHeight);
+
+    this->animator = Animator(this->sprite, defaultAnimSF);
     this->animator.start();
 };

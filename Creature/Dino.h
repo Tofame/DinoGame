@@ -13,5 +13,5 @@ public:
 
     Animator animator;
 
-    auto setupSprites() -> void;
+    auto setup() -> void;
 };

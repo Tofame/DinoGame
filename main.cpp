@@ -13,9 +13,9 @@ int main() {
     // SM.playSound("die");
 
     auto dino = Dino();
-    dino.setupSprites();
+    dino.setup();
 
-    auto window = sf::RenderWindow(sf::VideoMode(800,600),"Dino The Game");
+    auto window = sf::RenderWindow(sf::VideoMode(windowWidth,windowHeight),"Dino The Game");
     auto event = sf::Event();
 
     while (window.isOpen()){
