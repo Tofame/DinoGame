@@ -10,14 +10,16 @@
 #include "Utils/TextureManager.h"
 #include "UI/GameInterface.h"
 
+auto resetGame() -> void;
+
 int main() {
     // Setup the textures
     TextureManager::setupTextures();
 
+    GameInterface::setupUI();
+
     SoundManager::addSound("die");
     SoundManager::playSound("die");
-
-    GameInterface::setupBackgroundTexture();
 
     // The gameloop etc.
     gameState = STATE_PLAY;
@@ -45,11 +47,13 @@ int main() {
                     // Restart the game when gameover
                     if(gameState == STATE_GAMEOVER) {
                         gameState = STATE_PLAY;
+                        resetGame();
                         continue;
                     }
 
                     switch(event.key.code) {
                         case sf::Keyboard::Up:
+                            gameState = STATE_GAMEOVER;
                         case sf::Keyboard::Space: {
                             if (dino.isInTheAir()) continue;
                             std::thread jumpThread(&Dino::jump, &dino);
@@ -77,4 +81,8 @@ int main() {
     }
 
     return 0;
+}
+
+auto resetGame() -> void {
+    dino.setup();
 }

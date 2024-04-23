@@ -6,7 +6,7 @@
      if (!backgroundTexture.loadFromFile(projectPath + "\\Resources\\Graphics\\Backgrounds\\background1.png"))
          throw std::runtime_error("Couldnt load background image");
 
-     if (!gameOverTexture.loadFromFile(projectPath + "\\Resources\\Graphics\\Backgrounds\\background1.png"))
+     if (!gameOverTexture.loadFromFile(projectPath + "\\Resources\\Graphics\\UI\\GameOver1.png"))
          throw std::runtime_error("Couldnt load game over image");
 
      if (!textureDinoRun.loadFromFile(projectPath+"\\Resources\\Graphics\\Characters\\dinoRun.png"))

@@ -44,6 +44,6 @@ extern sf::Texture textureTrampoline_Idle;
 extern sf::Texture textureTrampoline_Animation;
 
 extern sf::Texture backgroundTexture;
-extern sf::Texture gameOverTexture;
-
 extern sf::Sprite backgroundSprite;
+extern sf::Texture gameOverTexture;
+extern sf::Sprite gameOverSprite;
