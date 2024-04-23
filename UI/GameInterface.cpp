@@ -3,6 +3,8 @@
 #include "../Globals.h"
 #include "GameInterface.h"
 
+float backgroundMoveSpeed = 0.2;
+
 void GameInterface::setupBackgroundTexture() {
     auto *resultTexture = new sf::RenderTexture;
 
@@ -41,7 +43,7 @@ void GameInterface::drawPlayScreen() {
     if(-backgroundSprite.getPosition().x > backgroundSpriteWidth/2) {
         backgroundSprite.setPosition(0, backgroundSprite.getPosition().y);
     } else {
-        backgroundSprite.setPosition(backgroundSprite.getPosition().x - 2.0, backgroundSprite.getPosition().y);
+        backgroundSprite.setPosition(backgroundSprite.getPosition().x - backgroundMoveSpeed, backgroundSprite.getPosition().y);
     }
 
     window.display();

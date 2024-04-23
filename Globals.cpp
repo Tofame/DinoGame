@@ -37,5 +37,6 @@ sf::Texture textureTrampoline_Idle = sf::Texture();
 sf::Texture textureTrampoline_Animation = sf::Texture();
 
 sf::Texture backgroundTexture = sf::Texture();
+sf::Texture gameOverTexture = sf::Texture();
 
 sf::Sprite backgroundSprite = sf::Sprite();
