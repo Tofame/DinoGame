@@ -50,7 +50,6 @@ int main() {
 
                     switch(event.key.code) {
                         case sf::Keyboard::Up:
-                            gameState = STATE_GAMEOVER;
                         case sf::Keyboard::Space: {
                             if (dino.isInTheAir()) continue;
                             SoundManager::playSound("jump");

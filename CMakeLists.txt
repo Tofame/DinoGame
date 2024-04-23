@@ -19,6 +19,8 @@ add_executable(Dino
         main.cpp
         Creature/Dino.cpp
         Creature/Dino.h
+        Creature/Saw.cpp
+        Creature/Saw.h
         Utils/SoundManager.cpp
         Utils/SoundManager.h
         Utils/Animator.cpp

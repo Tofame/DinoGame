@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Animator.h"
 #include <iostream>
 
