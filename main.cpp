@@ -42,8 +42,6 @@ int main() {
         } else {
             backgroundSprite.setPosition(backgroundSprite.getPosition().x - 2.0, backgroundSprite.getPosition().y);
         }
-        // TESTS
-        //window.draw(sf::Sprite(backgroundTexture));
 
         window.display();
 

@@ -25,6 +25,11 @@ sf::Sound sound = sf::Sound();
 sf::Texture textureDinoRun = sf::Texture();
 sf::Texture textureDinoJump = sf::Texture();
 sf::Texture textureDinoDash = sf::Texture();
+
+sf::Texture textureSaw = sf::Texture();
+sf::Texture textureTrampoline_Idle = sf::Texture();
+sf::Texture textureTrampoline_Animation = sf::Texture();
+
 sf::Texture backgroundTexture = sf::Texture();
 
 sf::Sprite backgroundSprite = sf::Sprite();

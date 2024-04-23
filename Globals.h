@@ -26,6 +26,11 @@ extern sf::Sound sound;
 extern sf::Texture textureDinoRun;
 extern sf::Texture textureDinoJump;
 extern sf::Texture textureDinoDash;
+
+extern sf::Texture textureSaw;
+extern sf::Texture textureTrampoline_Idle;
+extern sf::Texture textureTrampoline_Animation;
+
 extern sf::Texture backgroundTexture;
 
 extern sf::Sprite backgroundSprite;
