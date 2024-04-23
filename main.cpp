@@ -31,7 +31,11 @@ int main() {
         window.draw(dino.sprite);
         // DRAW BACKGROUND
         window.draw(backgroundSprite);
-        backgroundSprite.setPosition(backgroundSprite.getPosition().x - 0.01, backgroundSprite.getPosition().y);
+        if(-backgroundSprite.getPosition().x > backgroundSpriteWidth/2) {
+            backgroundSprite.setPosition(0, backgroundSprite.getPosition().y);
+        } else {
+            backgroundSprite.setPosition(backgroundSprite.getPosition().x - 2.0, backgroundSprite.getPosition().y);
+        }
         // TESTS
         //window.draw(sf::Sprite(backgroundTexture));
 
@@ -69,10 +73,11 @@ auto setupBackgroundTexture() -> void {
 
     sf::RenderTexture *resultTexture = new sf::RenderTexture;
 
-    if (!resultTexture->create(window.getSize().x * 2, backgroundTexture.getSize().y))
+    if (!resultTexture->create(backgroundSpriteWidth, backgroundTexture.getSize().y))
         throw std::runtime_error("Couldnt create RenderTexture for setupBackgroundTexture()");
 
     auto tempSprite = sf::Sprite(backgroundTexture);
+    // *2 because we want line to be 2x larger than screen
     for(auto i = 0; i < (window.getSize().x/backgroundTexture.getSize().x) * 2; i++) {
         tempSprite.setPosition(i * backgroundTexture.getSize().x, 0);
         resultTexture->draw(tempSprite);

@@ -17,6 +17,8 @@ const float dash = 1.7;
 const float dinoPosX = 0.1; // window width * dinoPosX, places dino at this position.
 const float dinoPosY = 0.7;
 
+const float backgroundSpriteWidth = window.getSize().x * 2;
+
 // STORED LOADED ASSETS
 sf::Sound sound = sf::Sound();
 sf::Texture textureDinoRun = sf::Texture();

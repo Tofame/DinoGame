@@ -18,6 +18,8 @@ extern const float dash;
 extern const float dinoPosX;
 extern const float dinoPosY;
 
+extern const float backgroundSpriteWidth;
+
 // STORED LOADED ASSETS
 extern sf::Sound sound;
 extern sf::Texture textureDinoRun;
