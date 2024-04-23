@@ -6,6 +6,8 @@
 
 class SoundManager {
 public:
+    static void setupSounds();
+
     static void addSound(const std::string& name);
     static void playSound(const std::string& name);
 

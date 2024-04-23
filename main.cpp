@@ -15,11 +15,8 @@ auto resetGame() -> void;
 int main() {
     // Setup the textures
     TextureManager::setupTextures();
-
     GameInterface::setupUI();
-
-    SoundManager::addSound("die");
-    SoundManager::playSound("die");
+    SoundManager::setupSounds();
 
     // The gameloop etc.
     gameState = STATE_PLAY;
@@ -56,6 +53,7 @@ int main() {
                             gameState = STATE_GAMEOVER;
                         case sf::Keyboard::Space: {
                             if (dino.isInTheAir()) continue;
+                            SoundManager::playSound("jump");
                             std::thread jumpThread(&Dino::jump, &dino);
                             jumpThread.detach();
                             break;

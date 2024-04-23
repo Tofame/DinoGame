@@ -7,6 +7,12 @@
 
 std::map<std::string, sf::SoundBuffer> SoundManager::soundBuffers = std::map<std::string, sf::SoundBuffer>();
 
+void SoundManager::setupSounds() {
+    SoundManager::addSound("die");
+    SoundManager::addSound("jump");
+    SoundManager::addSound("point");
+}
+
 void SoundManager::addSound(const std::string &name) {
     sf::SoundBuffer buffer;
     if (!buffer.loadFromFile(std::filesystem::current_path().parent_path().string()+"\\Resources\\Sounds\\" + name + ".wav"))
