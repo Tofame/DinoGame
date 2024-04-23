@@ -14,11 +14,8 @@ void GameInterface::drawGameOverScreen() {
 void GameInterface::drawPlayScreen() {
     window.clear();
 
-    // DRAW DINO
-    if(dino.dinoState == IS_RUNNING) { // If is running update sprite frame with animator
-        dino.animator.updateSpriteFrame();
-    }
-    window.draw(dino.sprite);
+    dino.draw();
+
     // DRAW BACKGROUND
     window.draw(backgroundSprite);
     if(-backgroundSprite.getPosition().x > backgroundSpriteWidth/2) {
@@ -28,21 +25,6 @@ void GameInterface::drawPlayScreen() {
     }
 
     window.display();
-
-    // STATE HANDLING HERE
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        if(dino.getState() != IS_DASHING)
-            dino.dash();
-    } else {
-        // ABOVE THE GROUND (IN THE AIR)
-        if (dino.isInTheAir()) {
-            if(dino.getState() != IS_JUMPING)
-                dino.setState(IS_JUMPING);
-        } else { // ON THE GROUND
-            if(dino.getState() != IS_RUNNING)
-                dino.setState(IS_RUNNING);
-        }
-    }
 };
 
 void GameInterface::setupBackgroundTexture() {

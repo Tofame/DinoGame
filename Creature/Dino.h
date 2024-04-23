@@ -17,10 +17,14 @@ public:
 
     float mass;
     dinoStates dinoState;
+    sf::RectangleShape hitbox;
+    sf::Vector2f defaultHitboxPos;
 
     Animator animator;
 
     auto setup() -> void;
+    auto draw() -> void;
+    auto handleStates() -> void;
 
     auto jump() -> void;
     auto isInTheAir() -> bool;
