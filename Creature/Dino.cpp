@@ -59,7 +59,13 @@ void Dino::jump() {
         h = v0 * t - (0.5 * gravity * (this->mass/30) * t * t);
         this->sprite.setPosition(dinoPosX * window.getSize().x, dinoPosY * window.getSize().y - std::max(0.0f, h));
     }
+    // We do this as there will be an edge case (very rare) where last setPos call in while wouldnt have h = 0
+    this->sprite.setPosition(dinoPosX * window.getSize().x, dinoPosY * window.getSize().y);
     this->setState(IS_RUNNING);
+}
+
+auto Dino::isInTheAir() -> bool {
+    return (this->sprite.getPosition().y >= dinoPosY * window.getSize().y);
 }
 
 void Dino::dash() {

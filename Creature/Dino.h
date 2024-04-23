@@ -23,6 +23,7 @@ public:
     auto setup() -> void;
 
     auto jump() -> void;
+    auto isInTheAir() -> bool;
     auto dash() -> void;
     auto setState(dinoStates state) -> void;
     auto getState() -> dinoStates;
