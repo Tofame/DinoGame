@@ -19,7 +19,7 @@ int main() {
     // SM.addSound("die");
     // SM.playSound("die");
 
-    auto dino = Dino(22.5);
+    auto dino = Dino(42.5);
     dino.setup();
 
     setupBackgroundTexture();
@@ -53,7 +53,7 @@ int main() {
                 dino.dash();
         } else {
             // ABOVE THE GROUND (IN THE AIR)
-            if (!dino.isInTheAir()) {
+            if (dino.isInTheAir()) {
                 if(dino.getState() != IS_JUMPING)
                     dino.setState(IS_JUMPING);
             } else { // ON THE GROUND
@@ -75,15 +75,16 @@ int main() {
                     switch(event.key.code) {
                         case sf::Keyboard::Up:
                         case sf::Keyboard::Space: {
-                            if (!dino.isInTheAir()) continue;
+                            if (dino.isInTheAir()) continue;
                             std::thread jumpThread(&Dino::jump, &dino);
                             jumpThread.detach();
                             break;
                         }
                         case sf::Keyboard::Down:
                         {
-                            if (dino.isInTheAir())
-                                //dino.sprite.move(0, -12.1);
+                            if (dino.isInTheAir(15.0)) {
+                                dino.sprite.move(0, 15.0);
+                            }
 
                             if (dino.getState() == IS_DASHING) continue;
                             dino.dash();

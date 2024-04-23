@@ -65,7 +65,11 @@ void Dino::jump() {
 }
 
 auto Dino::isInTheAir() -> bool {
-    return (this->sprite.getPosition().y >= dinoPosY * window.getSize().y);
+    return (this->isInTheAir(0));
+}
+
+auto Dino::isInTheAir(float offsetYtoApply) -> bool {
+    return ((this->sprite.getPosition().y + offsetYtoApply) < dinoPosY * window.getSize().y);
 }
 
 void Dino::dash() {

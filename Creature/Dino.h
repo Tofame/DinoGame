@@ -24,6 +24,7 @@ public:
 
     auto jump() -> void;
     auto isInTheAir() -> bool;
+    auto isInTheAir(float offsetYtoApply) -> bool;
     auto dash() -> void;
     auto setState(dinoStates state) -> void;
     auto getState() -> dinoStates;
