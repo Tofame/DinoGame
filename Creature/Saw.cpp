@@ -21,3 +21,11 @@ auto Saw::setup() -> void {
     this->animator = Animator(pointerSprite,ANIM_LOOP, defaultAnimSF);
     this->animator.start();
 };
+
+auto Saw::draw() -> void {
+    this->animator.updateSpriteFrame();
+    window.draw(this->sprite);
+
+    // DRAW HITBOX
+    window.draw(this->hitbox);
+}

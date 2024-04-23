@@ -36,29 +36,29 @@ auto Dino::setup() -> void {
 };
 
 auto Dino::draw() -> void {
-    if(dino.dinoState == IS_RUNNING) { // If is running update sprite frame with animator
-        dino.animator.updateSpriteFrame();
+    if(this->dinoState == IS_RUNNING) { // If is running update sprite frame with animator
+        this->animator.updateSpriteFrame();
     }
 
-    dino.handleStates();
-    window.draw(dino.sprite);
+    this->handleStates();
+    window.draw(this->sprite);
 
     // DRAW HITBOX
-    window.draw(dino.hitbox);
+    window.draw(this->hitbox);
 }
 
 auto Dino::handleStates() -> void {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        if(dino.getState() != IS_DASHING)
-            dino.dash();
+        if(this->getState() != IS_DASHING)
+            this->dash();
     } else {
         // ABOVE THE GROUND (IN THE AIR)
-        if (dino.isInTheAir()) {
-            if(dino.getState() != IS_JUMPING)
-                dino.setState(IS_JUMPING);
+        if (this->isInTheAir()) {
+            if(this->getState() != IS_JUMPING)
+                this->setState(IS_JUMPING);
         } else { // ON THE GROUND
-            if(dino.getState() != IS_RUNNING)
-                dino.setState(IS_RUNNING);
+            if(this->getState() != IS_RUNNING)
+                this->setState(IS_RUNNING);
         }
     }
 }
