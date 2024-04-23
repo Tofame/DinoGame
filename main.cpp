@@ -55,13 +55,27 @@ int main() {
                 case sf::Event::LostFocus:
                     // something
                 case sf::Event::KeyPressed:
-                    if(event.key.code == sf::Keyboard::Up || event.key.code == sf::Keyboard::Space) {
-                        if(dino.getState() != IS_RUNNING) continue;
-                        std::thread jumpThread(&Dino::jump, &dino);
-                        jumpThread.detach();
+                    switch(event.key.code) {
+                        case sf::Keyboard::Up:
+                        case sf::Keyboard::Space:
+                        {
+                            if (dino.getState() != IS_RUNNING) continue;
+                            std::thread jumpThread(&Dino::jump, &dino);
+                            jumpThread.detach();
+                            break;
+                        }
+                        case sf::Keyboard::Down:
+                        {
+                            if (dino.getState() != IS_DASHING) continue;
+                            //dino.sprite.setTexture(textureDinoWalk);
+                            break;
+                        }
+                        default:
+                            break;
                     }
                 default:
-                    std::cout << "Unknown event type \n";
+                    break;
+                    //std::cout << "Unknown event type \n";
             }
         }
     }
