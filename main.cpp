@@ -30,8 +30,10 @@ int main() {
         window.clear();
 
         // DRAW DINO
-        if(dino.dinoState == IS_RUNNING)
+        if(dino.dinoState == IS_RUNNING) {
+            dino.sprite.setTexture(textureDinoRun);
             dino.animator.updateSpriteFrame();
+        }
         window.draw(dino.sprite);
         // DRAW BACKGROUND
         window.draw(backgroundSprite);
@@ -44,6 +46,21 @@ int main() {
         //window.draw(sf::Sprite(backgroundTexture));
 
         window.display();
+
+        // STATE HANDLING HERE
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+            if(dino.getState() != IS_DASHING)
+                dino.dash();
+        } else {
+            // ABOVE THE GROUND (IN THE AIR)
+            if (dino.sprite.getPosition().y > dinoPosY * window.getSize().y) {
+                if(dino.getState() != IS_JUMPING)
+                    dino.setState(IS_JUMPING);
+            } else { // ON THE GROUND
+                if(dino.getState() != IS_RUNNING)
+                    dino.setState(IS_RUNNING);
+            }
+        }
 
         while (window.pollEvent(event)){
             switch(event.type) {
@@ -66,8 +83,8 @@ int main() {
                         }
                         case sf::Keyboard::Down:
                         {
-                            if (dino.getState() != IS_DASHING) continue;
-                            //dino.sprite.setTexture(textureDinoJump);
+                            if (dino.getState() == IS_DASHING) continue;
+                            dino.dash();
                             break;
                         }
                         default:

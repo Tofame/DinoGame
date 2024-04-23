@@ -26,6 +26,19 @@ auto Dino::setup() -> void {
 };
 
 auto Dino::setState(dinoStates state) -> void {
+    switch(state) {
+        case IS_RUNNING:
+            this->sprite.setTexture(textureDinoRun);
+            break;
+        case IS_JUMPING:
+            this->sprite.setTexture(textureDinoJump);
+            this->sprite.setTextureRect(sf::IntRect(0,0,32,32));
+            break;
+        case IS_DASHING:
+            this->sprite.setTexture(textureDinoDash);
+            this->sprite.setTextureRect(sf::IntRect(0,0,32,32));
+            break;
+    }
     dinoState = state;
 }
 
@@ -35,6 +48,7 @@ auto Dino::getState() -> dinoStates {
 
 void Dino::jump() {
     this->setState(IS_JUMPING);
+
     float v0 = 30.0;
     auto t1 = std::chrono::high_resolution_clock::now();
     float h = 0;
@@ -48,6 +62,6 @@ void Dino::jump() {
     this->setState(IS_RUNNING);
 }
 
-void Dino::crouch() {
-
+void Dino::dash() {
+    this->setState(IS_DASHING);
 }

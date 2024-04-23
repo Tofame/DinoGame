@@ -23,7 +23,7 @@ public:
     auto setup() -> void;
 
     auto jump() -> void;
-    auto crouch() -> void;
+    auto dash() -> void;
     auto setState(dinoStates state) -> void;
     auto getState() -> dinoStates;
 };
