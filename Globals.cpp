@@ -20,7 +20,10 @@ const float backgroundSpriteWidth = window.getSize().x * 2;
 
 // STORED LOADED ASSETS
 sf::Sound sound = sf::Sound();
+
 sf::Texture textureDinoRun = sf::Texture();
-sf::Texture textureDinoWalk = sf::Texture();
+sf::Texture textureDinoJump = sf::Texture();
+sf::Texture textureDinoDash = sf::Texture();
 sf::Texture backgroundTexture = sf::Texture();
+
 sf::Sprite backgroundSprite = sf::Sprite();

@@ -9,9 +9,12 @@
         throw std::runtime_error("Couldnt load background image");
     }
 
-    if (!textureDinoRun.loadFromFile(projectPath+"\\Resources\\Graphics\\Characters\\raptor-run.png"))
+    if (!textureDinoRun.loadFromFile(projectPath+"\\Resources\\Graphics\\Characters\\dinoRun.png"))
         std::cout << "Couldn't load Dino texture (Running).";
 
-    if (!textureDinoWalk.loadFromFile(projectPath+"\\Resources\\Graphics\\Characters\\raptor-walk.png"))
+    if (!textureDinoJump.loadFromFile(projectPath + "\\Resources\\Graphics\\Characters\\dinoJump.png"))
         std::cout << "Couldn't load Dino texture (Walking).";
+
+     if (!textureDinoDash.loadFromFile(projectPath + "\\Resources\\Graphics\\Characters\\dinoDash.png"))
+         std::cout << "Couldn't load Dino texture (Walking).";
 }

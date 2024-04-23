@@ -67,7 +67,7 @@ int main() {
                         case sf::Keyboard::Down:
                         {
                             if (dino.getState() != IS_DASHING) continue;
-                            //dino.sprite.setTexture(textureDinoWalk);
+                            //dino.sprite.setTexture(textureDinoJump);
                             break;
                         }
                         default:

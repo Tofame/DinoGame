@@ -21,7 +21,10 @@ extern const float backgroundSpriteWidth;
 
 // STORED LOADED ASSETS
 extern sf::Sound sound;
+
 extern sf::Texture textureDinoRun;
-extern sf::Texture textureDinoWalk;
+extern sf::Texture textureDinoJump;
+extern sf::Texture textureDinoDash;
 extern sf::Texture backgroundTexture;
+
 extern sf::Sprite backgroundSprite;
