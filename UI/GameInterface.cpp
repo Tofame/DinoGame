@@ -3,6 +3,8 @@
 #include "../Globals.h"
 #include "GameInterface.h"
 
+#include "../SawSpawner.h"
+
 float backgroundMoveSpeed = 0.2;
 
 void GameInterface::drawGameOverScreen() {
@@ -15,6 +17,13 @@ void GameInterface::drawPlayScreen() {
     window.clear();
 
     dino.draw();
+    if(!SawSpawner::saws.empty()) {
+        for (auto it = SawSpawner::saws.begin(); it != SawSpawner::saws.end(); ++it) {
+            auto *saw = *it;
+            saw->draw();
+            saw->sprite.move(-0.17, 0);
+        };
+    }
 
     // DRAW BACKGROUND
     window.draw(backgroundSprite);

@@ -3,14 +3,18 @@
 #include <iostream>
 #include <thread>
 #include <SFML/Graphics.hpp>
+#include <atomic>
 
 #include "Globals.h"
+#include "SawSpawner.h"
 
 #include "Utils/SoundManager.h"
 #include "Utils/TextureManager.h"
 #include "UI/GameInterface.h"
 
 auto resetGame() -> void;
+
+std::atomic<bool> isSpawningThreadActive(false);
 
 int main() {
     // Setup the textures
@@ -22,11 +26,20 @@ int main() {
     gameState = STATE_PLAY;
     dino.setup();
 
+
     auto event = sf::Event();
 
     while (window.isOpen()){
         if(gameState == STATE_PLAY) {
             GameInterface::drawPlayScreen();
+            if(!isSpawningThreadActive.load()) {
+                isSpawningThreadActive.store(true);
+                std::thread spawnThread([&]() {
+                    SawSpawner::spawnSaw();
+                    isSpawningThreadActive.store(false); // Reset the flag when the thread finishes
+                });
+                spawnThread.detach();
+            }
         } else if(gameState == STATE_GAMEOVER) {
             GameInterface::drawGameOverScreen();
         }

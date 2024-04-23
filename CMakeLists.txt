@@ -29,5 +29,7 @@ add_executable(Dino
         Utils/TextureManager.h
         UI/GameInterface.cpp
         UI/GameInterface.h
+        SawSpawner.cpp
+        SawSpawner.h
 )
 target_link_libraries(Dino sfml-graphics sfml-audio)
