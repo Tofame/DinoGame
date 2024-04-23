@@ -4,25 +4,27 @@
 #include <thread>
 #include <SFML/Graphics.hpp>
 
+#include "Globals.h"
+
 #include "Creature/Dino.h"
 #include "Utils/SoundManager.h"
 #include "Utils/TextureManager.h"
-#include "Globals.h"
-
-auto setupBackgroundTexture() -> void;
+#include "UI/GameInterface.h"
 
 int main() {
     // Setup the textures
-    textureManager::setupTextures();
+    TextureManager::setupTextures();
 
-    auto SM = soundManager();
-    // SM.addSound("die");
-    // SM.playSound("die");
+    SoundManager::addSound("die");
+    SoundManager::playSound("die");
+
+    GameInterface::setupBackgroundTexture();
+
+    // The gameloop etc.
+    gameState = STATE_PLAY;
 
     auto dino = Dino(42.5);
     dino.setup();
-
-    setupBackgroundTexture();
 
     auto event = sf::Event();
 
@@ -30,8 +32,7 @@ int main() {
         window.clear();
 
         // DRAW DINO
-        if(dino.dinoState == IS_RUNNING) {
-            dino.sprite.setTexture(textureDinoRun);
+        if(dino.dinoState == IS_RUNNING) { // If is running update sprite frame with animator
             dino.animator.updateSpriteFrame();
         }
         window.draw(dino.sprite);
@@ -100,24 +101,3 @@ int main() {
 
     return 0;
 }
-
-auto setupBackgroundTexture() -> void {
-    sf::RenderTexture *resultTexture = new sf::RenderTexture;
-
-    if (!resultTexture->create(backgroundSpriteWidth, backgroundTexture.getSize().y))
-        throw std::runtime_error("Couldnt create RenderTexture for setupBackgroundTexture()");
-
-    auto tempSprite = sf::Sprite(backgroundTexture);
-    // *2 because we want line to be 2x larger than screen
-    for(auto i = 0; i < (window.getSize().x/backgroundTexture.getSize().x) * 2; i++) {
-        tempSprite.setPosition(i * backgroundTexture.getSize().x, 0);
-        resultTexture->draw(tempSprite);
-    }
-
-    resultTexture->display();
-
-    backgroundSprite = sf::Sprite(resultTexture->getTexture());
-    backgroundSprite.setPosition(0, dinoPosY * window.getSize().y + textureDinoRun.getSize().y * spriteScale);
-
-    //backgroundSprite.setColor(sf::Color::Magenta);
-};

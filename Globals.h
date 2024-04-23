@@ -1,7 +1,7 @@
+#pragma once
+
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
-
-#include <thread>
 
 // GENERAL
 extern sf::RenderWindow window;
@@ -13,6 +13,14 @@ extern std::string projectPath;
 extern double defaultAnimSF;
 
 extern const float spriteScale;
+
+enum gameStates {
+    STATE_PLAY = 0,
+    STATE_PAUSE = 1,
+    STATE_GAMEOVER = 2
+};
+extern gameStates gameState;
+
 
 extern const float gravity;
 extern const float dinoPosX;

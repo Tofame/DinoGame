@@ -4,11 +4,10 @@
 #include <map>
 #include "SFML/Audio.hpp"
 
-class soundManager {
+class SoundManager {
 public:
-    void addSound(const std::string& name);
-    void playSound(const std::string& name);
+    static void addSound(const std::string& name);
+    static void playSound(const std::string& name);
 
-private:
-    std::map<std::string, sf::SoundBuffer> soundBuffers;
+    static std::map<std::string, sf::SoundBuffer> soundBuffers;
 };

@@ -2,7 +2,7 @@
 
 #include "../Globals.h"
 
-class textureManager {
+class TextureManager {
 public:
     static void setupTextures();
 };

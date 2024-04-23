@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Globals.h"
 #include <filesystem>
 
@@ -12,6 +14,8 @@ std::string projectPath = std::filesystem::current_path().parent_path().string()
 double defaultAnimSF = 50; // default animator single frame interval value
 
 const float spriteScale = 2.0;
+
+gameStates gameState = STATE_PLAY;
 
 const float gravity = 2.65; // the higher it is the smaller the jump (affects every jumping thing)
 const float dinoPosX = 0.1; // window width * dinoPosX, places dino at this position.

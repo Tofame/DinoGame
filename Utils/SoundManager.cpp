@@ -1,19 +1,22 @@
 #pragma once
 
-#include "soundManager.h"
 #include <filesystem>
+
+#include "soundManager.h"
 #include "../Globals.h"
 
-void soundManager::addSound(const std::string &name) {
+std::map<std::string, sf::SoundBuffer> SoundManager::soundBuffers = std::map<std::string, sf::SoundBuffer>();
+
+void SoundManager::addSound(const std::string &name) {
     sf::SoundBuffer buffer;
     if (!buffer.loadFromFile(std::filesystem::current_path().parent_path().string()+"\\Resources\\Sounds\\" + name + ".wav"))
         throw std::runtime_error("Failed to load file.");
-    soundBuffers[name] = buffer;
+    SoundManager::soundBuffers[name] = buffer;
 }
 
-void soundManager::playSound(const std::string &name) {
-    auto it = soundBuffers.find(name);
-    if (it != soundBuffers.end()) {
+void SoundManager::playSound(const std::string &name) {
+    auto it = SoundManager::soundBuffers.find(name);
+    if (it != SoundManager::soundBuffers.end()) {
         sound.setBuffer(it->second);
         sound.play();
     } else {

@@ -4,7 +4,7 @@
 
 #include <iostream>
 
- void textureManager::setupTextures() {
+ void TextureManager::setupTextures() {
     if (!backgroundTexture.loadFromFile(projectPath + "\\Resources\\Graphics\\Backgrounds\\background1.png")) {
         throw std::runtime_error("Couldnt load background image");
     }
