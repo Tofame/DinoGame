@@ -10,6 +10,8 @@ const sf::Vector2u originalSize = window.getSize();
 
 std::string projectPath = std::filesystem::current_path().parent_path().string();
 
+Dino dino =  Dino(42.5);
+
 // SYSTEM VARIABLES
 double defaultAnimSF = 50; // default animator single frame interval value
 

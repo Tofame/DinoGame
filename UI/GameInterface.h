@@ -7,5 +7,6 @@ class GameInterface {
 public:
     static void setupBackgroundTexture();
 
-    void drawBackground();
+    static void drawPlayScreen();
+    static void drawGameOverScreen();
 };

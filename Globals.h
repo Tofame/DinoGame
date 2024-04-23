@@ -3,11 +3,15 @@
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
 
+#include "Creature/Dino.h"
+
 // GENERAL
 extern sf::RenderWindow window;
 extern const sf::Vector2u originalSize;
 
 extern std::string projectPath;
+
+extern Dino dino;
 
 // SYSTEM VARIABLES
 extern double defaultAnimSF;
