@@ -68,7 +68,7 @@ int main() {
                     window.close();
                     break;
                 case sf::Event::Resized:
-                    //window.setSize(originalSize);
+                    window.setSize(originalSize);
                 case sf::Event::LostFocus:
                     // something
                 case sf::Event::KeyPressed:
@@ -83,7 +83,7 @@ int main() {
                         case sf::Keyboard::Down:
                         {
                             if (dino.isInTheAir())
-                                dino.sprite.move(0, -12.1);
+                                //dino.sprite.move(0, -12.1);
 
                             if (dino.getState() == IS_DASHING) continue;
                             dino.dash();

@@ -4,6 +4,7 @@
 // GENERAL
 sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
 sf::RenderWindow window = sf::RenderWindow(desktopMode, "Dino The Game");
+const sf::Vector2u originalSize = window.getSize();
 
 std::string projectPath = std::filesystem::current_path().parent_path().string();
 
