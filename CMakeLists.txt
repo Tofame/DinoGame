@@ -23,5 +23,7 @@ add_executable(Dino
         Globals.h
         Utils/Animator.cpp
         Utils/Animator.h
+        Utils/TextureManager.cpp
+        Utils/TextureManager.h
 )
 target_link_libraries(Dino sfml-graphics sfml-audio)

@@ -6,20 +6,24 @@
 enum dinoStates {
     IS_RUNNING = 0,
     IS_JUMPING = 1,
+    IS_DASHING = 2
 };
 
 class Dino {
 public:
-    Dino(); // Declare default constructor
+    Dino(float mass); // Declare default constructor
 
     sf::Sprite sprite;
 
-    Animator animator;
-
+    float mass;
     dinoStates dinoState;
 
+    Animator animator;
+
     auto setup() -> void;
+
     auto jump() -> void;
+    auto crouch() -> void;
     auto setState(dinoStates state) -> void;
     auto getState() -> dinoStates;
 };

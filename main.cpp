@@ -6,16 +6,20 @@
 
 #include "Creature/Dino.h"
 #include "Utils/SoundManager.h"
+#include "Utils/TextureManager.h"
 #include "Globals.h"
 
 auto setupBackgroundTexture() -> void;
 
 int main() {
+    // Setup the textures
+    textureManager::setupTextures();
+
     auto SM = soundManager();
     // SM.addSound("die");
     // SM.playSound("die");
 
-    auto dino = Dino();
+    auto dino = Dino(42.5);
     dino.setup();
 
     setupBackgroundTexture();
@@ -52,8 +56,7 @@ int main() {
                     // something
                 case sf::Event::KeyPressed:
                     if(event.key.code == sf::Keyboard::Up || event.key.code == sf::Keyboard::Space) {
-                        if(dino.getState() == IS_JUMPING) continue;
-                        dino.setState(IS_JUMPING);
+                        if(dino.getState() != IS_RUNNING) continue;
                         std::thread jumpThread(&Dino::jump, &dino);
                         jumpThread.detach();
                     }
@@ -67,10 +70,6 @@ int main() {
 }
 
 auto setupBackgroundTexture() -> void {
-    if (!backgroundTexture.loadFromFile(projectPath + "\\Resources\\Graphics\\Backgrounds\\background2.png")) {
-        throw std::runtime_error("Couldnt load background image");
-    }
-
     sf::RenderTexture *resultTexture = new sf::RenderTexture;
 
     if (!resultTexture->create(backgroundSpriteWidth, backgroundTexture.getSize().y))

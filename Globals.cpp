@@ -12,8 +12,7 @@ double defaultAnimSF = 50; // default animator single frame interval value
 
 const float spriteScale = 2.0;
 
-const float gravity = 1.05;
-const float dash = 1.7;
+const float gravity = 2.65; // the higher it is the smaller the jump (affects every jumping thing)
 const float dinoPosX = 0.1; // window width * dinoPosX, places dino at this position.
 const float dinoPosY = 0.7;
 

@@ -14,7 +14,6 @@ extern double defaultAnimSF;
 extern const float spriteScale;
 
 extern const float gravity;
-extern const float dash;
 extern const float dinoPosX;
 extern const float dinoPosY;
 
