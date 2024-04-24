@@ -6,7 +6,7 @@
 #include <atomic>
 
 #include "Globals.h"
-#include "TrapSpawner.h"
+#include "Creature/ObstacleThread.h"
 
 #include "Utils/SoundManager.h"
 #include "Utils/TextureManager.h"
@@ -42,7 +42,7 @@ int main() {
             if(!isSpawningThreadActive.load()) {
                 isSpawningThreadActive.store(true);
                 std::thread spawnThread([&]() {
-                    TrapSpawner::create();
+                    ObstacleThread::create();
                     isSpawningThreadActive.store(false); // Reset the flag when the thread finishes
                 });
                 spawnThread.detach();

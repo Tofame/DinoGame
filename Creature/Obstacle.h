@@ -3,9 +3,9 @@
 #include <sfml/Graphics.hpp>
 #include "../Utils/Animator.h"
 
-class Trap {
+class Obstacle {
 public:
-    Trap(); // Declare default constructor
+    Obstacle(); // Declare default constructor
 
     sf::Sprite sprite;
 

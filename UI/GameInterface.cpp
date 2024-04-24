@@ -3,7 +3,7 @@
 #include "../Globals.h"
 #include "GameInterface.h"
 
-#include "../TrapSpawner.h"
+#include "../Creature/ObstacleThread.h"
 
 float backgroundMoveSpeed = 0.2;
 
@@ -17,12 +17,12 @@ void GameInterface::drawPlayScreen() {
     window.clear();
 
     dino.draw();
-    if(!TrapSpawner::traps.empty()) {
-        for (auto it = TrapSpawner::traps.begin(); it != TrapSpawner::traps.end(); ++it) {
+    if(!ObstacleThread::obstacles.empty()) {
+        for (auto it = ObstacleThread::obstacles.begin(); it != ObstacleThread::obstacles.end(); ++it) {
             auto *trap = *it;
             if (trap->sprite.getPosition().x < -40) { // - 30 because texture still can be on screen while its pos can be < 0
                 delete trap; // Delete the pointer
-                TrapSpawner::traps.erase(it); // Remove the pointer from the queue
+                ObstacleThread::obstacles.erase(it); // Remove the pointer from the queue
             } else {
                 trap->draw();
                 trap->sprite.move(-0.17, 0);

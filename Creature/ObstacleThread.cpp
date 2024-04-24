@@ -1,13 +1,11 @@
 #pragma once
 
-#include "TrapSpawner.h"
+#include "ObstacleThread.h"
 
 #include <thread>
-#include <cstdlib>
-#include <iostream>
 #include <random>
 
-std::deque<Trap*> TrapSpawner::traps = std::deque<Trap*>();
+std::deque<Obstacle*> ObstacleThread::obstacles = std::deque<Obstacle*>();
 
 int getRandomSleepDuration(int minMs, int maxMs) {
     std::random_device rd;
@@ -16,10 +14,10 @@ int getRandomSleepDuration(int minMs, int maxMs) {
     return distr(gen);
 }
 
-auto TrapSpawner::create() -> void {
-    Trap* saw = new Trap();
-    (*saw).setup();
-    TrapSpawner::traps.push_back(saw);
+auto ObstacleThread::create() -> void {
+    Obstacle* saw = new Obstacle();
+    saw->setup();
+    ObstacleThread::obstacles.push_back(saw);
 
     std::this_thread::sleep_for(std::chrono::milliseconds(getRandomSleepDuration(500, 1200)));
 }
