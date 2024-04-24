@@ -19,13 +19,14 @@ void GameInterface::drawPlayScreen() {
     dino.draw();
     if(!ObstacleThread::obstacles.empty()) {
         for (auto it = ObstacleThread::obstacles.begin(); it != ObstacleThread::obstacles.end(); ++it) {
-            auto *trap = *it;
-            if (trap->sprite.getPosition().x < -40) { // - 30 because texture still can be on screen while its pos can be < 0
-                delete trap; // Delete the pointer
+            auto obstacle = *it;
+            if (obstacle->sprite.getPosition().x < -40) { // - 30 because texture still can be on screen while its pos can be < 0
+                delete obstacle; // Delete the pointer
                 ObstacleThread::obstacles.erase(it); // Remove the pointer from the queue
             } else {
-                trap->draw();
-                trap->sprite.move(-0.17, 0);
+                obstacle->draw();
+                obstacle->sprite.move(-0.17, 0);
+                obstacle->hitbox.move(-0.17, 0);
             }
         };
     }
