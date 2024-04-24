@@ -19,8 +19,8 @@ add_executable(Dino
         main.cpp
         Creature/Dino.cpp
         Creature/Dino.h
-        Creature/Saw.cpp
-        Creature/Saw.h
+        Creature/Trap.cpp
+        Creature/Trap.h
         Utils/SoundManager.cpp
         Utils/SoundManager.h
         Utils/Animator.cpp
@@ -29,7 +29,7 @@ add_executable(Dino
         Utils/TextureManager.h
         UI/GameInterface.cpp
         UI/GameInterface.h
-        SawSpawner.cpp
-        SawSpawner.h
+        TrapSpawner.cpp
+        TrapSpawner.h
 )
 target_link_libraries(Dino sfml-graphics sfml-audio)

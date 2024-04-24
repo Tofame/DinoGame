@@ -3,9 +3,9 @@
 #include <sfml/Graphics.hpp>
 #include "../Utils/Animator.h"
 
-class Saw {
+class Trap {
 public:
-    Saw(); // Declare default constructor
+    Trap(); // Declare default constructor
 
     sf::Sprite sprite;
 

@@ -2,12 +2,12 @@
 
 #include <iostream>
 
-#include "Saw.h"
+#include "Trap.h"
 #include "../Globals.h"
 
-Saw::Saw() : animator() {};
+Trap::Trap() : animator() {};
 
-auto Saw::setup() -> void {
+auto Trap::setup() -> void {
     this->sprite = sf::Sprite();
     this->sprite.setTexture(textureSaw);
 
@@ -25,7 +25,7 @@ auto Saw::setup() -> void {
     this->animator.start();
 };
 
-auto Saw::draw() -> void {
+auto Trap::draw() -> void {
     this->animator.updateSpriteFrame();
     window.draw(this->sprite);
 

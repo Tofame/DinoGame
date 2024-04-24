@@ -6,7 +6,7 @@
 #include <atomic>
 
 #include "Globals.h"
-#include "SawSpawner.h"
+#include "TrapSpawner.h"
 
 #include "Utils/SoundManager.h"
 #include "Utils/TextureManager.h"
@@ -31,11 +31,17 @@ int main() {
 
     while (window.isOpen()){
         if(gameState == STATE_PLAY) {
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+                if (dino.isInTheAir(0.05)) {
+                    dino.sprite.move(0, 0.05);
+                }
+            }
+
             GameInterface::drawPlayScreen();
             if(!isSpawningThreadActive.load()) {
                 isSpawningThreadActive.store(true);
                 std::thread spawnThread([&]() {
-                    SawSpawner::spawnSaw();
+                    TrapSpawner::create();
                     isSpawningThreadActive.store(false); // Reset the flag when the thread finishes
                 });
                 spawnThread.detach();
@@ -72,10 +78,6 @@ int main() {
                         }
                         case sf::Keyboard::Down:
                         {
-                            if (dino.isInTheAir(15.0)) {
-                                dino.sprite.move(0, 15.0);
-                            }
-
                             if (dino.getState() == IS_DASHING) continue;
                             dino.dash();
                             break;

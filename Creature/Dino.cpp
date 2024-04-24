@@ -91,13 +91,16 @@ void Dino::jump() {
     float v0 = 30.0;
     auto t1 = std::chrono::high_resolution_clock::now();
     float h = 0;
+    float hLast = 0;
     while (h >= 0) {
         auto t2 = std::chrono::high_resolution_clock::now();
         auto t = v0 * std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         t /= 1000;
         h = v0 * t - (0.5 * gravity * (this->mass/30) * t * t);
-        this->sprite.setPosition(dinoPosX * window.getSize().x, dinoPosY * window.getSize().y - std::max(0.0f, h));
+        //this->sprite.setPosition(dinoPosX * window.getSize().x, dinoPosY * window.getSize().y - std::max(0.0f, h));
+        this->sprite.move(0, (hLast - h));
         this->hitbox.setPosition(hitbox.getPosition().x, dinoPosY * window.getSize().y - std::max(0.0f, h) + (hitbox.getSize().y/2 + 8));
+        hLast = h;
     }
     // We do this as there will be an edge case (very rare) where last setPos call in while wouldnt have h = 0
     this->sprite.setPosition(dinoPosX * window.getSize().x, dinoPosY * window.getSize().y);
