@@ -73,11 +73,11 @@ auto Dino::setState(dinoStates state) -> void {
             break;
         case IS_JUMPING:
             this->sprite.setTexture(textureDinoJump);
-            this->sprite.setTextureRect(sf::IntRect(0,0,32,32));
+            this->sprite.setTextureRect(sf::IntRect(0,0,sprite.getTexture()->getSize().y,sprite.getTexture()->getSize().y));
             break;
         case IS_DASHING:
             this->sprite.setTexture(textureDinoDash);
-            this->sprite.setTextureRect(sf::IntRect(0,0,32,32));
+            this->sprite.setTextureRect(sf::IntRect(0,0,sprite.getTexture()->getSize().y,sprite.getTexture()->getSize().y));
             break;
     }
     dinoState = state;
