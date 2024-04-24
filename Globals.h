@@ -30,6 +30,11 @@ extern const float gravity;
 extern const float dinoPosX;
 extern const float dinoPosY;
 
+extern const float dashHitboxOffsetY;
+extern const float dashFallingValue;
+extern const float defaultHitboxOffsetX;
+extern const float defaultHitboxOffsetY;
+
 extern const float backgroundSpriteWidth;
 
 // STORED LOADED ASSETS

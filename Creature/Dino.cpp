@@ -27,7 +27,7 @@ auto Dino::setup() -> void {
     hitbox.setOutlineColor(sf::Color::Yellow);
     hitbox.setOutlineThickness(1.0f);
     hitbox.setPosition(this->sprite.getPosition());
-    hitbox.move(spriteWidth/2 + 8,spriteHeight/2 + 8);
+    hitbox.move(spriteWidth/2 + defaultHitboxOffsetY,spriteHeight/2 + defaultHitboxOffsetY);
     defaultHitboxPos = hitbox.getPosition();
 
     auto *pointerSprite = &(this->sprite);
@@ -49,8 +49,9 @@ auto Dino::draw() -> void {
 
 auto Dino::handleStates() -> void {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        if(this->getState() != IS_DASHING)
+        if(this->getState() != IS_DASHING) {
             this->dash();
+        }
     } else {
         // ABOVE THE GROUND (IN THE AIR)
         if (this->isInTheAir()) {
@@ -67,6 +68,7 @@ auto Dino::handleStates() -> void {
 auto Dino::setState(dinoStates state) -> void {
     switch(state) {
         case IS_RUNNING:
+            this->hitbox.setPosition(this->defaultHitboxPos);
             this->sprite.setTexture(textureDinoRun);
             break;
         case IS_JUMPING:
@@ -86,6 +88,11 @@ auto Dino::getState() -> dinoStates {
 }
 
 void Dino::jump() {
+    if(this->getState() == IS_DASHING) {
+        this->hitbox.setPosition(this->defaultHitboxPos);
+        this->hitbox.move(0, 20.0); // when going from dashing to jumping the hitbox was going up by A LOT
+        // so this is meant to "balance it out"
+    }
     this->setState(IS_JUMPING);
 
     float v0 = 30.0;
@@ -94,17 +101,18 @@ void Dino::jump() {
     float hLast = 0;
     while (h >= 0) {
         auto t2 = std::chrono::high_resolution_clock::now();
-        auto t = v0 * std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
-        t /= 1000;
+        auto t = (v0 * std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()) / 1000;
         h = v0 * t - (0.5 * gravity * (this->mass/30) * t * t);
-        //this->sprite.setPosition(dinoPosX * window.getSize().x, dinoPosY * window.getSize().y - std::max(0.0f, h));
         this->sprite.move(0, (hLast - h));
-        this->hitbox.setPosition(hitbox.getPosition().x, dinoPosY * window.getSize().y - std::max(0.0f, h) + (hitbox.getSize().y/2 + 8));
+        this->hitbox.move(0, (hLast -h));
+        if((hLast - h > 0) && !isInTheAir(hLast-h)) break;
         hLast = h;
+
+        //this->sprite.setPosition(dinoPosX * window.getSize().x, dinoPosY * window.getSize().y - std::max(0.0f, h));
+        //this->hitbox.setPosition(hitbox.getPosition().x, dinoPosY * window.getSize().y - std::max(0.0f, h) + (hitbox.getSize().y/2 + 8));
     }
     // We do this as there will be an edge case (very rare) where last setPos call in while wouldnt have h = 0
     this->sprite.setPosition(dinoPosX * window.getSize().x, dinoPosY * window.getSize().y);
-    this->hitbox.setPosition(this->defaultHitboxPos);
     this->setState(IS_RUNNING);
 }
 
@@ -117,5 +125,7 @@ auto Dino::isInTheAir(float offsetYtoApply) -> bool {
 }
 
 void Dino::dash() {
+    if(getState() != IS_JUMPING)
+        dino.hitbox.move(0, dashHitboxOffsetY);
     this->setState(IS_DASHING);
 }

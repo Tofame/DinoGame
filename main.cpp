@@ -32,8 +32,9 @@ int main() {
     while (window.isOpen()){
         if(gameState == STATE_PLAY) {
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-                if (dino.isInTheAir(0.05)) {
-                    dino.sprite.move(0, 0.05);
+                if (dino.isInTheAir(dashFallingValue)) {
+                    dino.sprite.move(0, dashFallingValue);
+                    dino.hitbox.move(0, dashFallingValue);
                 }
             }
 

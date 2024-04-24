@@ -10,7 +10,7 @@ const sf::Vector2u originalSize = window.getSize();
 
 std::string projectPath = std::filesystem::current_path().parent_path().string();
 
-Dino dino =  Dino(42.5);
+Dino dino = Dino(42.5);
 
 // SYSTEM VARIABLES
 double defaultAnimSF = 50; // default animator single frame interval value
@@ -20,8 +20,13 @@ const float spriteScale = 2.0;
 gameStates gameState = STATE_PLAY;
 
 const float gravity = 2.65; // the higher it is the smaller the jump (affects every jumping thing)
-const float dinoPosX = 0.1; // window width * dinoPosX, places dino at this position.
-const float dinoPosY = 0.7;
+const float dinoPosX = 0.1; // window width * dinoPosX, places dino at this position. (ground)
+const float dinoPosY = 0.7; // window width * dinoPosX, places dino at this position. (ground)
+
+const float dashHitboxOffsetY = 15;
+const float dashFallingValue = 0.05; // a value which quickens the fall when holding dash
+const float defaultHitboxOffsetX = 8; // where we want relatively to dino place the hitbox
+const float defaultHitboxOffsetY = 8; // where we want relatively to dino place the hitbox
 
 const float backgroundSpriteWidth = window.getSize().x * 2;
 
