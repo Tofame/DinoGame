@@ -1,11 +1,10 @@
 #pragma once
 
-#include <sfml/Graphics.hpp>
-#include "../Utils/Animator.h"
+#include "Obstacle.h"
 
-class Obstacle {
+class Saw : public Obstacle {
 public:
-    Obstacle();
+    Saw();
 
     sf::Sprite sprite;
 

@@ -31,5 +31,9 @@ add_executable(Dino
         UI/GameInterface.h
         Creature/ObstacleThread.cpp
         Creature/ObstacleThread.h
+        Creature/ObstacleFactory.cpp
+        Creature/ObstacleFactory.h
+        Creature/Saw.cpp
+        Creature/Saw.h
 )
 target_link_libraries(Dino sfml-graphics sfml-audio)

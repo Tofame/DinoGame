@@ -13,14 +13,14 @@ enum states {
 
 class Animator {
 private:
-    sf::Sprite *sprite;
+    sf::Sprite& sprite;
     int frameCount;
     int frameIndex;
     std::chrono::system_clock::time_point startTime;
     double singleFrameInterval;
 
 public:
-    Animator(sf::Sprite *sprite, states state, double singleFrameInterval);
+    Animator(sf::Sprite& sprite, states state, double singleFrameInterval);
 
     Animator();
 

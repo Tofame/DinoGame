@@ -8,10 +8,10 @@
 Dino::Dino(float mass) : animator() {
     Dino::mass = mass;
     this->setState(IS_RUNNING);
+    this->sprite = sf::Sprite();
 }
 
 auto Dino::setup() -> void {
-    this->sprite = sf::Sprite();
     this->sprite.setTexture(textureDinoRun);
 
     auto spriteHeight = this->sprite.getTexture()->getSize().y;
@@ -30,8 +30,8 @@ auto Dino::setup() -> void {
     hitbox.move(spriteWidth/2 + defaultHitboxOffsetY,spriteHeight/2 + defaultHitboxOffsetY);
     defaultHitboxPos = hitbox.getPosition();
 
-    auto *pointerSprite = &(this->sprite);
-    this->animator = Animator(pointerSprite,ANIM_LOOP, defaultAnimSF);
+    //auto *pointerSprite = &(this->sprite);
+    this->animator = Animator(sprite,ANIM_LOOP, defaultAnimSF);
     this->animator.start();
 };
 

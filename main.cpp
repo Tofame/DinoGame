@@ -70,6 +70,7 @@ int main() {
 
                     switch(event.key.code) {
                         case sf::Keyboard::Up:
+                            std::cout << ObstacleThread::obstacles.size() << "\n";
                         case sf::Keyboard::Space: {
                             if (dino.isInTheAir()) continue;
                             SoundManager::playSound("jump");

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Obstacle.h"
+#include "Saw.h"
 #include "../Globals.h"
 
-Obstacle::Obstacle() : animator() {};
+Saw::Saw() : animator() {};
 
-auto Obstacle::setup() -> void {
+auto Saw::setup() -> void {
     this->sprite = sf::Sprite();
 
     this->sprite.setTexture(textureSaw);
@@ -30,7 +30,7 @@ auto Obstacle::setup() -> void {
     this->animator.start();
 };
 
-auto Obstacle::draw() -> void {
+auto Saw::draw() -> void {
     this->animator.updateSpriteFrame();
     window.draw(this->sprite);
 
