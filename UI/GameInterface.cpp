@@ -20,8 +20,13 @@ void GameInterface::drawPlayScreen() {
     if(!TrapSpawner::traps.empty()) {
         for (auto it = TrapSpawner::traps.begin(); it != TrapSpawner::traps.end(); ++it) {
             auto *trap = *it;
-            trap->draw();
-            trap->sprite.move(-0.17, 0);
+            if (trap->sprite.getPosition().x < -40) { // - 30 because texture still can be on screen while its pos can be < 0
+                delete trap; // Delete the pointer
+                TrapSpawner::traps.erase(it); // Remove the pointer from the queue
+            } else {
+                trap->draw();
+                trap->sprite.move(-0.17, 0);
+            }
         };
     }
 

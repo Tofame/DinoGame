@@ -21,13 +21,5 @@ auto TrapSpawner::create() -> void {
     (*saw).setup();
     TrapSpawner::traps.push_back(saw);
 
-    for (auto it = TrapSpawner::traps.begin(); it != TrapSpawner::traps.end(); ++it) {
-        Trap* currentSaw = *it;
-        if (currentSaw->sprite.getPosition().x < 0) {
-            delete currentSaw; // Delete the pointer
-            TrapSpawner::traps.erase(it); // Remove the pointer from the queue
-        }
-    };
-
     std::this_thread::sleep_for(std::chrono::milliseconds(getRandomSleepDuration(500, 1200)));
 }
