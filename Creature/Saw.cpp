@@ -3,7 +3,9 @@
 #include "Saw.h"
 #include "../Globals.h"
 
-Saw::Saw() : animator() {};
+Saw::Saw() {
+    this->animator = Animator();
+};
 
 auto Saw::setup() -> void {
     this->sprite = sf::Sprite();
@@ -26,7 +28,8 @@ auto Saw::setup() -> void {
     hitbox.move(spriteWidth/2,spriteHeight/2);
     defaultHitboxPos = hitbox.getPosition();
 
-    this->animator = Animator(sprite,ANIM_LOOP, defaultAnimSF);
+    auto *pointerSprite = &(this->sprite);
+    this->animator = Animator(pointerSprite,ANIM_LOOP, defaultAnimSF);
     this->animator.start();
 };
 
