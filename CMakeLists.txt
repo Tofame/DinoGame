@@ -31,5 +31,7 @@ add_executable(Dino
         UI/GameInterface.h
         Creature/ObstacleThread.cpp
         Creature/ObstacleThread.h
+        GameSystems/CollisionChecker.cpp
+        GameSystems/CollisionChecker.h
 )
 target_link_libraries(Dino sfml-graphics sfml-audio)

@@ -23,6 +23,7 @@ public:
     Animator animator;
 
     auto setup() -> void;
+    auto reset() -> void;
     auto draw() -> void;
     auto handleStates() -> void;
 

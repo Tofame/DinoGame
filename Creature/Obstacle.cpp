@@ -37,5 +37,6 @@ auto Obstacle::draw() -> void {
     window.draw(this->sprite);
 
     // DRAW HITBOX
-    window.draw(this->hitbox);
+    if(drawCollisions)
+        window.draw(this->hitbox);
 }

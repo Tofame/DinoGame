@@ -35,6 +35,22 @@ auto Dino::setup() -> void {
     this->animator.start();
 };
 
+auto Dino::reset() -> void {
+    this->sprite.setTexture(textureDinoRun);
+    auto spriteHeight = this->sprite.getTexture()->getSize().y;
+    auto spriteWidth = spriteHeight;
+    this->sprite.setTextureRect(sf::IntRect(0,0,spriteWidth,spriteHeight));
+
+    this->sprite.setPosition(dinoPosX * window.getSize().x, dinoPosY * window.getSize().y);
+    hitbox.setPosition(this->sprite.getPosition());
+    hitbox.move(spriteWidth/2 + defaultHitboxOffsetY,spriteHeight/2 + defaultHitboxOffsetY);
+
+    this->setState(IS_RUNNING);
+
+    this->animator.state = ANIM_LOOP;
+    this->animator.start();
+}
+
 auto Dino::draw() -> void {
     if(this->dinoState == IS_RUNNING) { // If is running update sprite frame with animator
         this->animator.updateSpriteFrame();
@@ -44,7 +60,8 @@ auto Dino::draw() -> void {
     window.draw(this->sprite);
 
     // DRAW HITBOX
-    window.draw(this->hitbox);
+    if(drawCollisions)
+        window.draw(this->hitbox);
 }
 
 auto Dino::handleStates() -> void {

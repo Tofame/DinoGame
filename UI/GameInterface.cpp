@@ -4,6 +4,7 @@
 #include "GameInterface.h"
 
 #include "../Creature/ObstacleThread.h"
+#include "../GameSystems/CollisionChecker.h"
 
 float backgroundMoveSpeed = 0.2;
 
@@ -27,6 +28,9 @@ void GameInterface::drawPlayScreen() {
                 obstacle->draw();
                 obstacle->sprite.move(-0.17, 0);
                 obstacle->hitbox.move(-0.17, 0);
+                if(CollisionChecker::checkCollision(obstacle->hitbox, dino.hitbox)) {
+                    gameState = STATE_GAMEOVER;
+                }
             }
         };
     }

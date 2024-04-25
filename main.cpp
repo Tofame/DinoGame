@@ -63,7 +63,6 @@ int main() {
                 case sf::Event::KeyPressed:
                     // Restart the game when gameover
                     if(gameState == STATE_GAMEOVER) {
-                        gameState = STATE_PLAY;
                         resetGame();
                         continue;
                     }
@@ -97,5 +96,7 @@ int main() {
 }
 
 auto resetGame() -> void {
-    dino.setup();
+    ObstacleThread::obstacles.clear();
+    dino.reset();
+    gameState = STATE_PLAY;
 }

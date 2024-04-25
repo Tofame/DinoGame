@@ -18,6 +18,8 @@ extern double defaultAnimSF;
 
 extern const float spriteScale;
 
+extern const bool drawCollisions;
+
 enum gameStates {
     STATE_PLAY = 0,
     STATE_PAUSE = 1,
