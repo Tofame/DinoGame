@@ -1,5 +1,3 @@
-#pragma once
-
 #include "TextureManager.h"
 
  void TextureManager::setupTextures() {

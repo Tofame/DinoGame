@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Saw.h"
 #include "../Globals.h"
 

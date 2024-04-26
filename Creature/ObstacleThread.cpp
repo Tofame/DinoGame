@@ -1,5 +1,3 @@
-#pragma once
-
 #include "ObstacleThread.h"
 
 #include <thread>

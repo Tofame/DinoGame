@@ -1,5 +1,3 @@
-#pragma once
-
 #include "CollisionChecker.h"
 
 bool CollisionChecker::checkCollision(sf::RectangleShape& rect1, sf::RectangleShape& rect2) {

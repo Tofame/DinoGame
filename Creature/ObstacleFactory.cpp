@@ -1,5 +1,3 @@
-#pragma once
-
 #include "ObstacleFactory.h"
 
 #include "Obstacle.h"
