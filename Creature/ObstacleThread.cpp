@@ -17,10 +17,7 @@ int getRandomSleepDuration(int minMs, int maxMs) {
 }
 
 auto ObstacleThread::create() -> void {
-    //Saw* obstaclePtr = ObstacleFactory::createSaw();
-    //ObstacleThread::obstacles.push_back(obstaclePtr);
-    Saw* obstacle = new Saw();
-    obstacle->setup();
+    Obstacle* obstacle = ObstacleFactory::createSaw();
     ObstacleThread::obstacles.push_back(obstacle);
 
     std::this_thread::sleep_for(std::chrono::milliseconds(getRandomSleepDuration(500, 1200)));
