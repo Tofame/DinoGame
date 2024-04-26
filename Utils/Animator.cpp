@@ -3,15 +3,18 @@
 #include "Animator.h"
 #include <iostream>
 
-Animator::Animator(sf::Sprite* sprite, states state, double singleFrameInterval) {
+Animator::Animator(sf::Sprite* sprite, states state, double singleFrameInterval): sprite() {
     this->sprite = sprite;
-    this->frameCount = static_cast<int>((*sprite).getTexture()->getSize().x/(*sprite).getTexture()->getSize().y);
+    this->frameCount = static_cast<int>(sprite->getTexture()->getSize().x / sprite->getTexture()->getSize().y);
     this->frameIndex = 0;
     this->singleFrameInterval = singleFrameInterval;
     this->state = state;
-};
+} ;
 
-Animator::Animator() {};
+Animator::Animator() {
+    
+}
+
 
 void Animator::start() {
     startTime =  std::chrono::high_resolution_clock::now();
@@ -31,9 +34,9 @@ auto Animator::updateSpriteFrame() -> void {
         this->state = ANIM_STOP;
 
 
-    int frameHeight = (*sprite).getTexture()->getSize().y;
+    int frameHeight = sprite->getTexture()->getSize().y;
 
-    (*sprite).setTextureRect(sf::IntRect(0,0,frameHeight,frameHeight));
+    sprite->setTextureRect(sf::IntRect(0,0,frameHeight,frameHeight));
 
-    (*sprite).setTextureRect(sf::IntRect(frameIndex * frameHeight, 0, frameHeight, frameHeight));
+    sprite->setTextureRect(sf::IntRect(frameIndex * frameHeight, 0, frameHeight, frameHeight));
 }

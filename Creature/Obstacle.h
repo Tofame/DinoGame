@@ -5,7 +5,7 @@
 
 class Obstacle {
 public:
-    Obstacle(); // Declare default constructor
+    Obstacle();
 
     sf::Sprite sprite;
 

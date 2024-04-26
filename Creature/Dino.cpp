@@ -8,10 +8,10 @@
 Dino::Dino(float mass) : animator() {
     Dino::mass = mass;
     this->setState(IS_RUNNING);
+    this->sprite = sf::Sprite();
 }
 
 auto Dino::setup() -> void {
-    this->sprite = sf::Sprite();
     this->sprite.setTexture(textureDinoRun);
 
     auto spriteHeight = this->sprite.getTexture()->getSize().y;

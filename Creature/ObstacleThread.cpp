@@ -5,6 +5,8 @@
 #include <thread>
 #include <random>
 
+#include "ObstacleFactory.h"
+
 std::deque<Obstacle*> ObstacleThread::obstacles = std::deque<Obstacle*>();
 
 int getRandomSleepDuration(int minMs, int maxMs) {
@@ -15,7 +17,9 @@ int getRandomSleepDuration(int minMs, int maxMs) {
 }
 
 auto ObstacleThread::create() -> void {
-    Obstacle* obstacle = new Obstacle();
+    //Saw* obstaclePtr = ObstacleFactory::createSaw();
+    //ObstacleThread::obstacles.push_back(obstaclePtr);
+    Saw* obstacle = new Saw();
     obstacle->setup();
     ObstacleThread::obstacles.push_back(obstacle);
 
