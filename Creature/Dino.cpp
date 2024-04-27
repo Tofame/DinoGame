@@ -114,7 +114,7 @@ void Dino::jump() {
     auto t1 = std::chrono::high_resolution_clock::now();
     float h = 0;
     float hLast = 0;
-    while (h >= 0) {
+    while (h >= 0 && gameState != STATE_GAMEOVER) {
         auto t2 = std::chrono::high_resolution_clock::now();
         auto t = (v0 * std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()) / 1000;
         h = v0 * t - (0.5 * gravity * (this->mass/30) * t * t);

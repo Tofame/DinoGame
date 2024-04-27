@@ -15,6 +15,8 @@ extern Dino dino;
 
 // SYSTEM VARIABLES
 extern double defaultAnimSF;
+extern float obstaclesSpeed;
+extern float backgroundSpeed;
 
 extern const float spriteScale;
 

@@ -4,9 +4,8 @@
 #include "../Creature/ObstacleThread.h"
 #include "../GameSystems/CollisionChecker.h"
 
-float backgroundMoveSpeed = 0.2;
-
 void GameInterface::drawGameOverScreen() {
+    window.clear();
     window.draw(gameOverSprite);
 
     window.display();
@@ -24,10 +23,15 @@ void GameInterface::drawPlayScreen() {
                 ObstacleThread::obstacles.erase(it); // Remove the pointer from the queue
             } else {
                 obstacle->draw();
-                obstacle->sprite.move(-0.17, 0);
-                obstacle->hitbox.move(-0.17, 0);
+                obstacle->sprite.move(-obstaclesSpeed, 0);
+                obstacle->hitbox.move(-obstaclesSpeed, 0);
                 if(CollisionChecker::checkCollision(obstacle->hitbox, dino.hitbox)) {
+                    for (auto it = ObstacleThread::obstacles.begin(); it != ObstacleThread::obstacles.end(); ++it) {
+                        auto obstacle = *it;
+                        obstacle->sprite.setTextureRect(sf::IntRect(0,0,32,32));
+                    }
                     gameState = STATE_GAMEOVER;
+                    return;
                 }
             }
         };
@@ -38,7 +42,7 @@ void GameInterface::drawPlayScreen() {
     if(-backgroundSprite.getPosition().x > backgroundSpriteWidth/2) {
         backgroundSprite.setPosition(0, backgroundSprite.getPosition().y);
     } else {
-        backgroundSprite.setPosition(backgroundSprite.getPosition().x - backgroundMoveSpeed, backgroundSprite.getPosition().y);
+        backgroundSprite.setPosition(backgroundSprite.getPosition().x - backgroundSpeed, backgroundSprite.getPosition().y);
     }
 
     window.display();
