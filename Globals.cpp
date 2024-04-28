@@ -19,7 +19,7 @@ float backgroundSpeed = 4.70;
 
 const float spriteScale = 2.0;
 
-const bool drawCollisions = true;
+const bool drawCollisions = false;
 
 gameStates gameState = STATE_PLAY;
 
