@@ -6,6 +6,15 @@
 
 void GameInterface::drawGameOverScreen() {
     window.clear();
+
+    window.draw(dino.sprite);
+    for (auto it = ObstacleThread::obstacles.begin(); it != ObstacleThread::obstacles.end(); ++it) {
+        auto obstacle = *it;
+        window.draw(obstacle->sprite);
+    }
+
+    window.draw(backgroundSprite);
+
     window.draw(gameOverSprite);
 
     window.display();
@@ -26,10 +35,6 @@ void GameInterface::drawPlayScreen() {
                 obstacle->sprite.move(-obstaclesSpeed, 0);
                 obstacle->hitbox.move(-obstaclesSpeed, 0);
                 if(CollisionChecker::checkCollision(obstacle->hitbox, dino.hitbox)) {
-                    for (auto it = ObstacleThread::obstacles.begin(); it != ObstacleThread::obstacles.end(); ++it) {
-                        auto obstacle = *it;
-                        obstacle->sprite.setTextureRect(sf::IntRect(0,0,32,32));
-                    }
                     gameState = STATE_GAMEOVER;
                     return;
                 }
