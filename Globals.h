@@ -49,6 +49,7 @@ extern sf::Texture textureDinoJump;
 extern sf::Texture textureDinoDash;
 
 extern sf::Texture textureSaw;
+extern sf::Texture textureFlyingBird;
 extern sf::Texture textureTrampoline_Idle;
 extern sf::Texture textureTrampoline_Animation;
 

@@ -37,5 +37,7 @@ add_executable(Dino
         Creature/ObstacleFactory.h
         Creature/Saw.cpp
         Creature/Saw.h
+        Creature/FlyingBird.cpp
+        Creature/FlyingBird.h
 )
 target_link_libraries(Dino sfml-graphics sfml-audio)

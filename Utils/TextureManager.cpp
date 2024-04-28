@@ -18,6 +18,8 @@
 
      if (!textureSaw.loadFromFile(projectPath + "\\Resources\\Graphics\\Characters\\saw.png"))
          throw std::runtime_error("Couldn't load Saw texture.");
+     if (!textureFlyingBird.loadFromFile(projectPath + "\\Resources\\Graphics\\Characters\\flyingbird.png"))
+         throw std::runtime_error("Couldn't load Flying Bird texture.");
      if (!textureTrampoline_Idle.loadFromFile(projectPath + "\\Resources\\Graphics\\Characters\\trampoline_idle.png"))
          throw std::runtime_error("Couldn't load Idle Trampoline texture.");
      if (!textureTrampoline_Animation.loadFromFile(projectPath + "\\Resources\\Graphics\\Characters\\trampoline_animation.png"))

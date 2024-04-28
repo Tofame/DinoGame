@@ -15,7 +15,7 @@ auto Saw::setup() -> void {
 
     this->sprite.setTextureRect(sf::IntRect(0,0,spriteWidth,spriteHeight));
     this->sprite.setScale(spriteScale, spriteScale);
-    this->sprite.setPosition(window.getSize().x + spriteWidth, dinoPosY * window.getSize().y + 10);
+    this->sprite.setPosition((window.getSize().x * 1.2) + spriteWidth, dinoPosY * window.getSize().y + 10);
 
     // if you change -8 -4 or anything here then do it also in jump/dash as it is hitbox's offset
     this->hitbox = sf::RectangleShape(sf::Vector2f(spriteWidth, spriteHeight));
@@ -36,5 +36,6 @@ auto Saw::draw() -> void {
     window.draw(this->sprite);
 
     // DRAW HITBOX
-    window.draw(this->hitbox);
+    if(drawCollisions)
+        window.draw(this->hitbox);
 }

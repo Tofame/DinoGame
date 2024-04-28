@@ -42,6 +42,7 @@ sf::Texture textureDinoJump = sf::Texture();
 sf::Texture textureDinoDash = sf::Texture();
 
 sf::Texture textureSaw = sf::Texture();
+sf::Texture textureFlyingBird = sf::Texture();
 sf::Texture textureTrampoline_Idle = sf::Texture();
 sf::Texture textureTrampoline_Animation = sf::Texture();
 

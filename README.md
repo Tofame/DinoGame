@@ -9,5 +9,6 @@ and also to be submitted as a first C++ project for College.
 https://prinbles.itch.io/silent
 
 https://pixelfrog-assets.itch.io/pixel-adventure-1
+https://pixelfrog-assets.itch.io/pixel-adventure-2
 
 Sounds: jump, point, die taken from Dino Game (soon they will be exchanged for other ones)

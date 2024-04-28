@@ -18,5 +18,8 @@ auto ObstacleThread::create() -> void {
     Obstacle* obstacle = ObstacleFactory::createSaw();
     ObstacleThread::obstacles.push_back(obstacle);
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(getRandomSleepDuration(500, 1200)));
+    Obstacle* obstacle1 = ObstacleFactory::createFlyingBird();
+    ObstacleThread::obstacles.push_back(obstacle1);
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(300 + getRandomSleepDuration(300, 900)));
 }
