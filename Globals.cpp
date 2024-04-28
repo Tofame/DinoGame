@@ -1,6 +1,8 @@
 #include "Globals.h"
 #include <filesystem>
 
+#include "Utils/SoundManager.h"
+
 // GENERAL
 sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
 sf::RenderWindow window = sf::RenderWindow(desktopMode, "Dino The Game");
@@ -47,3 +49,23 @@ sf::Texture backgroundTexture = sf::Texture();
 sf::Sprite backgroundSprite = sf::Sprite();
 sf::Texture gameOverTexture = sf::Texture();
 sf::Sprite gameOverSprite = sf::Sprite();
+
+// METHODS
+void setGameState(gameStates state) {
+    switch(state) {
+        case STATE_PLAY: {
+            gameState = state;
+            break;
+        }
+        case STATE_PAUSE: {
+            throw std::runtime_error("STATE_PAUSE GameState is not implemented yet and shouldn't be used.");
+        }
+        case STATE_GAMEOVER: {
+            SoundManager::playSound("die");
+            gameState = state;
+            break;
+        }
+        default:
+            throw std::runtime_error("An unknown gameState in Globals.cpp: " + state);
+    }
+}

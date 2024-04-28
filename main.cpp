@@ -25,7 +25,7 @@ int main() {
     SoundManager::setupSounds();
 
     // The gameloop etc.
-    gameState = STATE_PLAY;
+    setGameState(STATE_PLAY);
     dino.setup();
     event = sf::Event();
 
@@ -126,5 +126,5 @@ auto run() -> void {
 auto resetGame() -> void {
     ObstacleThread::obstacles.clear();
     dino.reset();
-    gameState = STATE_PLAY;
+    setGameState(STATE_PLAY);
 }

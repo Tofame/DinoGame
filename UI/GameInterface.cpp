@@ -45,7 +45,7 @@ void GameInterface::drawObstacles() {
                 obstacle->sprite.move(-obstaclesSpeed, 0);
                 obstacle->hitbox.move(-obstaclesSpeed, 0);
                 if(CollisionChecker::checkCollision(obstacle->hitbox, dino.hitbox)) {
-                    gameState = STATE_GAMEOVER;
+                    setGameState(STATE_GAMEOVER);
                     return;
                 }
             }

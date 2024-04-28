@@ -56,3 +56,6 @@ extern sf::Texture backgroundTexture;
 extern sf::Sprite backgroundSprite;
 extern sf::Texture gameOverTexture;
 extern sf::Sprite gameOverSprite;
+
+// METHODS
+extern void setGameState(gameStates state);
