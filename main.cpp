@@ -30,7 +30,9 @@ int main() {
     event = sf::Event();
 
     // Variables for delta time
-    double drawInterval = 1000000000 / 90; // ≈ 0.0167 seconds
+    // I learned how to do that from "RyiSnow", video: https://youtu.be/VpH33Uw-_0E?list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&t=1072
+    // 1000000000 is 1 second (billion nanoseconds)
+    double drawInterval = 1000000000 / 90; // ≈ 0.0167 seconds ( for 1 / 60 )
     double delta = 0;
     long long lastTime = std::chrono::high_resolution_clock::now().time_since_epoch().count();
     long long currentTime;

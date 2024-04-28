@@ -23,7 +23,17 @@ void GameInterface::drawGameOverScreen() {
 void GameInterface::drawPlayScreen() {
     window.clear();
 
+    // DRAW DINO
     dino.draw();
+    // DRAW OBSTACLES
+    GameInterface::drawObstacles();
+    // DRAW BACKGROUND
+    GameInterface::drawBackgroundImage();
+
+    window.display();
+};
+
+void GameInterface::drawObstacles() {
     if(!ObstacleThread::obstacles.empty()) {
         for (auto it = ObstacleThread::obstacles.begin(); it != ObstacleThread::obstacles.end(); ++it) {
             auto obstacle = *it;
@@ -41,17 +51,18 @@ void GameInterface::drawPlayScreen() {
             }
         };
     }
+}
 
-    // DRAW BACKGROUND
+void GameInterface::drawBackgroundImage() {
     window.draw(backgroundSprite);
     if(-backgroundSprite.getPosition().x > backgroundSpriteWidth/2) {
         backgroundSprite.setPosition(0, backgroundSprite.getPosition().y);
     } else {
         backgroundSprite.setPosition(backgroundSprite.getPosition().x - backgroundSpeed, backgroundSprite.getPosition().y);
     }
+}
 
-    window.display();
-};
+// SETUP METHODS
 
 void GameInterface::setupBackgroundTexture() {
     auto *resultTexture = new sf::RenderTexture;
