@@ -3,6 +3,7 @@ project(DinoGame)
 
 set(CMAKE_CXX_STANDARD 20)
 set(BUILD_SHARED_LIBS FALSE)
+set(CMAKE_EXE_LINKER_FLAGS "-static")
 
 include(FetchContent)
 
