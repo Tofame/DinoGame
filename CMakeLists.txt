@@ -39,5 +39,6 @@ add_executable(Dino
         Creature/Saw.h
         Creature/FlyingBird.cpp
         Creature/FlyingBird.h
+        Utils/FontManager.cpp
 )
 target_link_libraries(Dino sfml-graphics sfml-audio)

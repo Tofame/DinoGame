@@ -10,6 +10,7 @@ public:
 
     static void drawObstacles();
     static void drawBackgroundImage();
+    static void drawScore();
 
     static void setupBackgroundTexture();
     static void setupGameOverTexture();

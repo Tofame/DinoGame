@@ -1,6 +1,8 @@
 #include "../Globals.h"
 #include "GameInterface.h"
 
+#include <iostream>
+
 #include "../Creature/ObstacleThread.h"
 #include "../GameSystems/CollisionChecker.h"
 
@@ -14,6 +16,8 @@ void GameInterface::drawGameOverScreen() {
     }
 
     window.draw(backgroundSprite);
+
+    GameInterface::drawScore();
 
     window.draw(gameOverSprite);
 
@@ -29,6 +33,8 @@ void GameInterface::drawPlayScreen() {
     GameInterface::drawObstacles();
     // DRAW BACKGROUND
     GameInterface::drawBackgroundImage();
+    // DRAW SCORE
+    GameInterface::drawScore();
 
     window.display();
 };
@@ -60,6 +66,13 @@ void GameInterface::drawBackgroundImage() {
     } else {
         backgroundSprite.setPosition(backgroundSprite.getPosition().x - backgroundSpeed, backgroundSprite.getPosition().y);
     }
+}
+
+void GameInterface::drawScore() {
+    text_scoreNow.setString(formatHighScore(game_scoreNow));
+
+    window.draw(text_scoreNow);
+    window.draw(text_scoreTop);
 }
 
 // SETUP METHODS

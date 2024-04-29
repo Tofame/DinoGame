@@ -34,6 +34,10 @@ const float defaultHitboxOffsetY = 8; // where we want relatively to dino place 
 
 const float backgroundSpriteWidth = window.getSize().x * 2;
 
+// GAME VARIABLES (change throughout the game)
+int game_scoreTop = 0; // top score since launching the game.exe
+int game_scoreNow = 0; // score while playing
+
 // STORED LOADED ASSETS
 sf::Sound sound = sf::Sound();
 
@@ -50,6 +54,12 @@ sf::Texture backgroundTexture = sf::Texture();
 sf::Sprite backgroundSprite = sf::Sprite();
 sf::Texture gameOverTexture = sf::Texture();
 sf::Sprite gameOverSprite = sf::Sprite();
+
+sf::Font font_KaphItalic;
+sf::Font font_KaphRegular;
+
+sf::Text text_scoreTop;
+sf::Text text_scoreNow;
 
 // METHODS
 void setGameState(gameStates state) {
@@ -69,4 +79,17 @@ void setGameState(gameStates state) {
         default:
             throw std::runtime_error("An unknown gameState in Globals.cpp: " + state);
     }
+}
+
+void increaseGameScore() {
+    game_scoreNow++;
+}
+
+std::string formatHighScore(int& scoreValue) {
+    std::string scoreString = std::to_string(scoreValue);
+    int leadingZeros = 6 - scoreString.length(); // maxWidth - scoreString.length()
+    if (leadingZeros > 0) {
+        scoreString = std::string(leadingZeros, '0') + scoreString;
+    }
+    return scoreString;
 }

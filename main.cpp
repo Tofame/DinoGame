@@ -11,6 +11,7 @@
 #include "Utils/SoundManager.h"
 #include "Utils/TextureManager.h"
 #include "UI/GameInterface.h"
+#include "Utils/FontManager.h"
 
 auto run() -> void;
 auto resetGame() -> void;
@@ -23,6 +24,8 @@ int main() {
     TextureManager::setupTextures();
     GameInterface::setupUI();
     SoundManager::setupSounds();
+    FontManager::setupFonts();
+    FontManager::setupTexts();
 
     // The gameloop etc.
     setGameState(STATE_PLAY);
@@ -52,7 +55,11 @@ int main() {
             delta--;
         }
 
-        if (timer >= 1000000000) { // runs every second
+        if (timer >= 1000000000 / 4) { // runs every quarter of a second
+            if(gameState == STATE_PLAY) {
+                increaseGameScore();
+                // std::cout << game_scoreNow << "\n";
+            }
             timer = 0;
         }
     }
@@ -124,6 +131,12 @@ auto run() -> void {
 }
 
 auto resetGame() -> void {
+    if(game_scoreNow > game_scoreTop) {
+        game_scoreTop = game_scoreNow;
+        text_scoreTop.setString("H " + formatHighScore(game_scoreTop));
+    }
+    game_scoreNow = 0;
+
     ObstacleThread::obstacles.clear();
     dino.reset();
     setGameState(STATE_PLAY);

@@ -41,6 +41,10 @@ extern const float defaultHitboxOffsetY;
 
 extern const float backgroundSpriteWidth;
 
+// GAME VARIABLES
+extern int game_scoreTop;
+extern int game_scoreNow;
+
 // STORED LOADED ASSETS
 extern sf::Sound sound;
 
@@ -58,5 +62,13 @@ extern sf::Sprite backgroundSprite;
 extern sf::Texture gameOverTexture;
 extern sf::Sprite gameOverSprite;
 
+extern sf::Font font_KaphItalic;
+extern sf::Font font_KaphRegular;
+
+extern sf::Text text_scoreTop;
+extern sf::Text text_scoreNow;
+
 // METHODS
 extern void setGameState(gameStates state);
+extern void increaseGameScore();
+extern std::string formatHighScore(int& scoreValue);
