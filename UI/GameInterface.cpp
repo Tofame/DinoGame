@@ -43,7 +43,8 @@ void GameInterface::drawObstacles() {
     if(!ObstacleThread::obstacles.empty()) {
         for (auto it = ObstacleThread::obstacles.begin(); it != ObstacleThread::obstacles.end(); ++it) {
             auto obstacle = *it;
-            if (obstacle->sprite.getPosition().x < -40) { // - 30 because texture still can be on screen while its pos can be < 0
+            // its not < 0, because texture can still be on screen even if its pos is negative and it would look weird.
+            if (obstacle->sprite.getPosition().x < -64) {
                 delete obstacle; // Delete the pointer
                 ObstacleThread::obstacles.erase(it); // Remove the pointer from the queue
             } else {
